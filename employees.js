@@ -6,7 +6,7 @@ const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "this.password",
-    database: "employees"
+    database: "employeesdb"
 });
 
 connection.connect(function (err) {
@@ -25,8 +25,6 @@ function prompts() {
                     "Display all employees by department",
                     "Display all employees by Manager",
                     "Add a new employee",
-                    "Remove employee",
-                    "Update employee",
                     "Update employee role",
                     "Update employee Manager"
                 ],
@@ -55,8 +53,6 @@ function prompts() {
                 case "Remove employee":
                     removeEmployee();
                     break;
-                case "Update employee":
-                    updateEmployee();
                 case "Update employee role":
                     updateRole();
                     break;
@@ -69,12 +65,12 @@ function prompts() {
 }
 
 async function displayAllEmployees() {
-    const allEmployees = db.getAllEmployees();
+    const allEmployees = Database.getAllEmployees();
     console.table(allEmployees);
 }
 
 async function displayByDepartment() {
-    const department = await database.selectAllDepartments();
+    const department = await Database.selectAllDepartments();
     const choices = department.map(({ id, department_name }) => ({
         id: id,
         department_name: department_name
@@ -92,7 +88,7 @@ async function displayByDepartment() {
 }
 
 async function displayByManager() {
-    const employees = await db.getAllEmployees();
+    const employees = await Database.getAllEmployees();
     const manager = employees.map(({ id, first_name, last_name }) => ({
         id: id,
         first_name: first_name,
@@ -109,7 +105,7 @@ async function displayByManager() {
             }
         )
 
-    const managerChosen = await database.getByManagers(managerChoice);
+    const managerChosen = await Database.getByManagers(managerChoice);
     console.table(managerChosen);
 }
 
@@ -136,7 +132,7 @@ async function addNewEmployee() {
             name: "manager_id"
         }]);
 
-        await addNewEmployee(first_name, last_name, role_id, manager_id)
+        await Dataabase.createNewEmployee(first_name, last_name, role_id, manager_id)
         console.log(`${first_name} ${last_name}'s information has been added to the system.`)
 }
 
@@ -149,7 +145,7 @@ async function addNewDepartment() {
         }
     ]);
 
-    await createNewDepartment(department_name);
+    await Database.createNewDepartment(department_name);
     console.log(`The ${department_name} has been created`);
 }
 
@@ -162,13 +158,13 @@ async function addNewRole() {
         }
     ]);
 
-    await createNewRole(role_name);
+    await Database.createNewRole(role_name);
     console.log(`The role of ${role_name} has been created`); 
 }
 
 async function removeEmployee() {
     
-    const employeeChoices = db.getEmployees()
+    const employeeChoices = Database.getEmployees()
     const employee = employeeChoices.map(({ id, first_name, last_name }) =>
         ({
             first_name: first_name,
@@ -183,14 +179,14 @@ async function removeEmployee() {
         name: "removed"
     });
 
-    await database.deleteEmployee(removed);
+    await Database.deleteEmployee(removed);
     console.log(`${removed} has been removed`);
     console.table(employeeChoices);
 }
 
 async function updateRole() {
 
-    const employeeChoices = await db.getEmployees();
+    const employeeChoices = await Database.getEmployees();
     const employee = employeeChoices.map(({ id, first_name, last_name }) => ({
         first_name: first_name,
         last_name: last_name,
