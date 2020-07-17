@@ -24,23 +24,23 @@ CREATE TABLE employee_role(
 
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id) 
-VALUES ("Mike", "Cervantes", 1, 1);
+VALUES ("Mike", "Cervantes", 1, null);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id) 
 VALUES ("John", "Doe", 2, 1);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id) 
-VALUES ("Rick", "Sanchez", 3, 2);
+VALUES ("Rick", "Sanchez", 3, null);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id) 
 VALUES ("Jane", "Smith", 4, 2);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id) 
-VALUES ("Terry", "Ditka", 5, 3);
+VALUES ("Terry", "Ditka", 5, null);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id) 
 VALUES ("Mark", "Fangmann", 6, 3);
-
+9
 
 
 INSERT INTO department (department_name)

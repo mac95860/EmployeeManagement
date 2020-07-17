@@ -1,16 +1,25 @@
 {
   "name": "EmployeeManagement",
   "version": "1.0.0",
-  "description": "",
-  "main": "dbUpdate.js",
+  "description": "In this application the user will be able to manage their team. This includes viewing the information for all employees, removing employees, creating new departments and much more.\r     The app accomplishes this by updating a database called \"employee\" in mySQL and returns the results in the terminal via Node.js.",
+  "main": "connection.js",
+  "dependencies": {
+    "inquirer": "^7.3.0",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mac95860/EmployeeManagement.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "inquirer": "^7.1.0",
-    "mysql": "^2.18.1"
-  }
+  "bugs": {
+    "url": "https://github.com/mac95860/EmployeeManagement/issues"
+  },
+  "homepage": "https://github.com/mac95860/EmployeeManagement#readme"
 }
