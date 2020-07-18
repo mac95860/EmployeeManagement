@@ -132,32 +132,6 @@ async function addNewEmployee() { //works
         prompts();
 }
 
-async function addNewDepartment() {
-    const { department_name } = await inquirer.prompt([
-        {
-            type: "input",
-            message: "What department are you wanting to create?",
-            name: department_name 
-        }
-    ]);
-
-    await Database.createNewDepartment(department_name);
-    console.log(`The ${department_name} has been created`);
-}
-
-async function addNewRole() {
-    const { role_name } = await inquirer.prompt([
-        {
-            type: "input",
-            message: "What role would you like to create?",
-            name: role_name
-        }
-    ]);
-
-    await Database.createNewRole(role_name);
-    console.log(`The role of ${role_name} has been created`); 
-}
-
 async function removeEmployee() {//works
     
     const allEmployees = await db.getAllEmployees();
@@ -185,6 +159,8 @@ async function removeEmployee() {//works
         }));
     
     console.table(newEmployeeTable);
+
+    prompts()
 }
 
 async function updateRole() {
@@ -220,6 +196,8 @@ async function updateRole() {
     console.log(`${updateEmployees}'s role has been updated`);
 
     db.updateRole(updateEmployees, roleUpdate);
+
+    prompts()
 
 }
 
