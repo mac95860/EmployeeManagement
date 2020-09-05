@@ -8,6 +8,25 @@
 ## Installation
 
     initialize npm: npm init -y 
-    
+
     install inquirer: npm i inquirer
     install mysql: npm i mysql
+
+## Features
+
+    - Users can create new employees
+    - Update an employee's role
+    - View employees by manager, department, or role
+
+## Technologies
+
+    * JavaScript
+    * MySQL
+    * Node
+    * Inquirer
+
+## Contributors
+    Michael Cervantes
+
+
+![Employee Management System](EmployeeManagement.JPG)
